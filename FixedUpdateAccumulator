@@ -1,0 +1,18 @@
+public class Time
+{
+    private const float fixedDeltaTime = 0.02f;
+    private float accumulator = 0;
+
+    public void Update(float deltaTime)
+    {
+        accumulator += deltaTime;
+        int simulationCount = Mathf.CeilToInt(accumulator / fixedDeltaTime);
+        accumulator %= fixedDeltaTime;
+
+        for (int i = 0; i < simulationCount; i++)
+        {
+            // 여기서 FixedUpdate 호출됨.
+            // 실제로는 렉으로 인해 accumulator 변수가 fixedDeltaTime의 두 배 이상만큼 커진다면 한 프레임에 여러 번 호출될 수 있는 것
+        }
+    }
+}
